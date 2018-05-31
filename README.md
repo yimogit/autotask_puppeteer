@@ -1,6 +1,7 @@
 ## 执行任务
 
 使用 travis-ci 用来做自动任务的一个库
+[![Build Status](https://travis-ci.org/yimogit/autotask_puppeteer.svg?branch=master)](https://travis-ci.org/yimogit/autotask_puppeteer)
 
 * 某素材网
 

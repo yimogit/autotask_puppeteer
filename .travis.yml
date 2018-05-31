@@ -9,6 +9,7 @@ cache:
 
 install:
   - npm install
+  - yum install google-chrome-stable
 
 before_script:
 
