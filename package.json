@@ -1,0 +1,13 @@
+{
+  "name": "autotask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.4.0",
+    "shelljs": "^0.7.6"
+  }
+}
