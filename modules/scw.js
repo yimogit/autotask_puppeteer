@@ -1,6 +1,6 @@
 const helper = require('../utils/helper')
 const puppeteer = require('puppeteer')
-const config = helper.loadConfig(['url', 'uname', 'pwd'], '--')
+const config = helper.loadConfig(['url', 'uname', 'pwd', 'headless'], '--')
 const exit_code = 'close browser'
 ;(async () => {
   console.log('启动浏览器')
@@ -22,41 +22,13 @@ const exit_code = 'close browser'
   await br.page.click('.submit')
   console.log('签到')
   await br.page.waitFor(1000)
+  await br.page.waitForSelector('.sign-but')
   await br.page.click('.sign-but')
   await br.page.waitFor(1000)
   await br.page.waitForSelector('.but')
   console.log('签到完成')
   br.close()
 })()
-
-// start(config.url).then(res => {
-//   const page = res.page
-//   const browser = res.browser
-//   page.on('console', msg => {
-//     if (msg._text === exit_code) {
-//       browser.close()
-//     }
-//   })
-//   page
-//     .evaluate(
-//       function(params) {
-//         document.querySelector('body > div.header.clear.container > ul > li.m-right > a').click()
-//         document.querySelector('#znlogin').click()
-//         document.querySelectordocument.querySelector('#loginform-account').val(params.username)
-//         document.querySelector('#loginform-password').val(params.password)
-//         document.querySelector('.submit').click()
-//       },
-//       { username: config.uname, password: config.pwd }
-//     )
-//     .then(() => {
-//       page.waitFor(10000).then(() => {
-//         page.tap('.sign-but').then(res => {
-//           document.querySelector('.but').click()
-//           browser.close()
-//         })
-//       })
-//     })
-// })
 
 async function start(params) {
   const browser = await puppeteer.launch({
@@ -70,7 +42,7 @@ async function start(params) {
     // 打开开发者工具, 当此值为true时, headless总为false
     devtools: false,
     // 关闭headless模式, 会打开浏览器
-    headless: true // !!params.headless
+    headless: !!params.headless
   })
   const page = await browser.newPage()
   // 设置浏览器视窗
