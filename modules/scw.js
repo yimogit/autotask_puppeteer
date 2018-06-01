@@ -33,6 +33,7 @@ start(config.url).then(res => {
 
 async function start(url) {
   const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
     // 若是手动下载的chromium需要指定chromium地址, 默认引用地址为 /项目目录/node_modules/puppeteer/.local-chromium/
     // executablePath: exepath,
     //设置超时时间
