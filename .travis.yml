@@ -13,8 +13,8 @@ install:
 before_script:
 
 script:
-  - node index --module scw --url ${SCW_URL_1} --uname ${SCW_USER_NAME_1} --pwd ${SCW_USER_PWD_1}
-  - node index --module scw --url ${SCW_URL_2} --uname ${SCW_USER_NAME_2} --pwd ${SCW_USER_PWD_2}
+  - node index --module scw --headless true --url ${SCW_URL_1} --uname ${SCW_USER_NAME_1} --pwd ${SCW_USER_PWD_1}
+  - node index --module scw --headless true url ${SCW_URL_2} --uname ${SCW_USER_NAME_2} --pwd ${SCW_USER_PWD_2}
 
 branches:
   only:
