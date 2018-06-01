@@ -70,7 +70,7 @@ async function start(params) {
     // 打开开发者工具, 当此值为true时, headless总为false
     devtools: false,
     // 关闭headless模式, 会打开浏览器
-    headless: !!params.headless
+    headless: true // !!params.headless
   })
   const page = await browser.newPage()
   // 设置浏览器视窗
