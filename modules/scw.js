@@ -22,10 +22,14 @@ const exit_code = 'close browser'
   await br.page.click('.submit')
   console.log('签到')
   await br.page.waitFor(1000)
-  await br.page.waitForSelector('.sign-but')
+  await br.page.waitForSelector('.sign-but').catch(() => {
+    br.close()
+  })
   await br.page.click('.sign-but')
   await br.page.waitFor(1000)
-  await br.page.waitForSelector('.but')
+  await br.page.waitForSelector('.but').catch(() => {
+    br.close()
+  })
   console.log('签到完成')
   br.close()
 })()
