@@ -18,20 +18,20 @@ const exit_code = 'close browser'
   await br.page.type('#loginform-password', config.pwd, {
     delay: 100 // 控制 keypress 也就是每个字母输入的间隔
   })
-  console.log('登录')
-  await br.page.click('.submit')
-  console.log('签到')
-  await br.page.waitFor(1000)
-  await br.page.waitForSelector('.sign-but').catch(() => {
-    br.close()
-  })
-  await br.page.click('.sign-but')
-  await br.page.waitFor(1000)
-  await br.page.waitForSelector('.but').catch(() => {
-    br.close()
-  })
-  console.log('签到完成')
-  br.close()
+  try {
+    console.log('登录')
+    await br.page.click('.submit')
+    console.log('签到')
+    await br.page.waitFor(1000)
+    await br.page.click('.sign-but')
+    await br.page.waitFor(1000)
+    await br.page.click('.but')
+    console.log('签到完成')
+    await br.close()
+  } catch (e) {
+    console.log('退出')
+    await br.browser.close()
+  }
 })()
 
 async function start(params) {
