@@ -13,18 +13,18 @@ start(config.url).then(res => {
   page
     .evaluate(
       function(params) {
-        $('body > div.header.clear.container > ul > li.m-right > a').click()
-        $('#znlogin').click()
-        $('#loginform-account').val(params.username)
-        $('#loginform-password').val(params.password)
-        $('.submit').click()
+        document.querySelector('body > div.header.clear.container > ul > li.m-right > a').click()
+        document.querySelector('#znlogin').click()
+        document.querySelectordocument.querySelector('#loginform-account').val(params.username)
+        document.querySelector('#loginform-password').val(params.password)
+        document.querySelector('.submit').click()
       },
       { username: config.uname, password: config.pwd }
     )
     .then(() => {
       page.waitFor(10000).then(() => {
         page.tap('.sign-but').then(res => {
-          $('.but').click()
+          document.querySelector('.but').click()
           browser.close()
         })
       })
