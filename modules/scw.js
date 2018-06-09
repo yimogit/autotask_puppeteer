@@ -27,11 +27,12 @@ const exit_code = 'close browser'
     await br.page.waitFor(2000)
     await br.page.click('.but')
     console.log('签到完成')
-    await br.close()
+    await br.browser.close()
   } catch (e) {
-    console.log('退出')
+    console.log(e)
     await br.browser.close()
   }
+  console.log('退出')
 })()
 
 async function start(params) {
@@ -46,7 +47,7 @@ async function start(params) {
     // 打开开发者工具, 当此值为true时, headless总为false
     devtools: false,
     // 关闭headless模式, 会打开浏览器
-    headless: !!params.headless
+    headless: params.headless === 'true'
   })
   const page = await browser.newPage()
   // 设置浏览器视窗
